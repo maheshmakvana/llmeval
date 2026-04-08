@@ -198,7 +198,7 @@ def _print_verbose_results(test_results: List[TestResult], summary: EvaluationRe
         from rich.table import Table
 
         console = Console()
-        table = Table(title="llmeval Evaluation Results", show_header=True, header_style="bold magenta")
+        table = Table(title="llmgrader Evaluation Results", show_header=True, header_style="bold magenta")
         table.add_column("#", style="dim", width=4)
         table.add_column("Input", max_width=40)
         table.add_column("Metrics", max_width=60)

@@ -1,9 +1,9 @@
-# llmeval
+# llmgrader
 
 **Open-source LLM evaluation framework** — 50+ research-backed metrics for RAG pipelines, AI agents, safety, and conversational systems. Pytest-native. Provider-agnostic.
 
 ```bash
-pip install llmeval
+pip install llmgrader
 ```
 
 ---
@@ -11,8 +11,8 @@ pip install llmeval
 ## Quick Start
 
 ```python
-from llmeval import LLMTestCase, assert_test
-from llmeval.metrics import AnswerRelevancyMetric, FaithfulnessMetric
+from llmgrader import LLMTestCase, assert_test
+from llmgrader.metrics import AnswerRelevancyMetric, FaithfulnessMetric
 
 tc = LLMTestCase(
     input="What is the capital of France?",
@@ -45,7 +45,7 @@ assert_test(tc, metrics=[
 | **Synthesizer** | Auto-generate Goldens from documents (4-step pipeline) |
 | **Providers** | OpenAI, Azure OpenAI, Anthropic, Ollama, custom LLM base class |
 | **Integrations** | LangChain, LlamaIndex, CrewAI |
-| **CLI** | `llmeval test`, `llmeval set-openai`, `llmeval list-metrics` |
+| **CLI** | `llmgrader test`, `llmgrader set-openai`, `llmgrader list-metrics` |
 
 ---
 
@@ -53,16 +53,16 @@ assert_test(tc, metrics=[
 
 ```bash
 # Core
-pip install llmeval
+pip install llmgrader
 
 # With LangChain integration
-pip install "llmeval[langchain]"
+pip install "llmgrader[langchain]"
 
 # With LlamaIndex
-pip install "llmeval[llamaindex]"
+pip install "llmgrader[llamaindex]"
 
 # Everything
-pip install "llmeval[all]"
+pip install "llmgrader[all]"
 ```
 
 ---
@@ -72,7 +72,7 @@ pip install "llmeval[all]"
 ### RAG Metrics
 
 ```python
-from llmeval.metrics import (
+from llmgrader.metrics import (
     AnswerRelevancyMetric,       # Is the answer relevant to the question?
     FaithfulnessMetric,          # Are claims grounded in retrieved context?
     ContextualRelevancyMetric,   # Are retrieved chunks relevant to the query?
@@ -97,7 +97,7 @@ print(result.score, result.reason)
 ### Custom: GEval (LLM-as-Judge)
 
 ```python
-from llmeval import GEvalMetric, LLMTestCaseParams
+from llmgrader import GEvalMetric, LLMTestCaseParams
 
 metric = GEvalMetric(
     name="Correctness",
@@ -116,8 +116,8 @@ result = metric.measure(tc)
 ### Custom: DAG (Deterministic)
 
 ```python
-from llmeval import DAGMetric
-from llmeval.metrics.custom.dag import DAGNode
+from llmgrader import DAGMetric
+from llmgrader.metrics.custom.dag import DAGNode
 
 dag = DAGNode(
     condition=lambda tc: len(tc.actual_output) > 0,
@@ -134,7 +134,7 @@ metric = DAGMetric(name="ResponseQuality", root=dag, threshold=0.5)
 ### Safety Metrics
 
 ```python
-from llmeval.metrics import (
+from llmgrader.metrics import (
     HallucinationMetric,   # Detects factual hallucinations vs context
     BiasMetric,            # Gender, racial, political, religious bias
     ToxicityMetric,        # Hate speech, harassment, harmful content
@@ -148,8 +148,8 @@ result = BiasMetric(threshold=0.7).measure(tc)
 ### Agentic Metrics
 
 ```python
-from llmeval import ToolCall
-from llmeval.metrics import (
+from llmgrader import ToolCall
+from llmgrader.metrics import (
     TaskCompletionMetric,      # Did the agent accomplish the goal?
     ToolCorrectnessMetric,     # Were the right tools called?
     StepEfficiencyMetric,      # Were unnecessary steps avoided?
@@ -172,8 +172,8 @@ result = ToolCorrectnessMetric(threshold=0.8).measure(tc)
 ### Conversational Metrics
 
 ```python
-from llmeval import ConversationalTestCase, Message
-from llmeval.metrics import (
+from llmgrader import ConversationalTestCase, Message
+from llmgrader.metrics import (
     ConversationalRelevancyMetric,
     ConversationCompletenessMetric,
     RoleAdherenceMetric,
@@ -198,8 +198,8 @@ result = KnowledgeRetentionMetric(threshold=0.7).measure(tc)
 ## Bulk Evaluation
 
 ```python
-from llmeval import evaluate, LLMTestCase
-from llmeval.metrics import AnswerRelevancyMetric, JSONCorrectnessMetric
+from llmgrader import evaluate, LLMTestCase
+from llmgrader.metrics import AnswerRelevancyMetric, JSONCorrectnessMetric
 
 test_cases = [
     LLMTestCase(input="What is 2+2?", actual_output="4"),
@@ -226,8 +226,8 @@ result.print_summary()
 ```python
 # test_my_llm.py
 import pytest
-from llmeval import LLMTestCase, assert_test
-from llmeval.metrics import AnswerRelevancyMetric, FaithfulnessMetric
+from llmgrader import LLMTestCase, assert_test
+from llmgrader.metrics import AnswerRelevancyMetric, FaithfulnessMetric
 
 def test_rag_answer():
     tc = LLMTestCase(
@@ -241,7 +241,7 @@ def test_rag_answer():
     ])
 
 
-# Run with: llmeval test test_my_llm.py
+# Run with: llmgrader test test_my_llm.py
 # Or:       pytest test_my_llm.py
 ```
 
@@ -250,7 +250,7 @@ def test_rag_answer():
 ## Tracing & Component-Level Evaluation
 
 ```python
-from llmeval import observe, Tracer, set_tracer, clear_tracer
+from llmgrader import observe, Tracer, set_tracer, clear_tracer
 
 tracer = Tracer()
 set_tracer(tracer)
@@ -280,7 +280,7 @@ tracer.print_last_trace()  # Shows span tree with latencies
 ## Dataset Management
 
 ```python
-from llmeval import EvaluationDataset, Golden
+from llmgrader import EvaluationDataset, Golden
 
 # Build a dataset
 ds = EvaluationDataset()
@@ -300,7 +300,7 @@ test_cases = ds.to_test_cases(generate_fn=my_llm.generate)
 ## Synthetic Dataset Generation
 
 ```python
-from llmeval import Synthesizer
+from llmgrader import Synthesizer
 
 synth = Synthesizer()
 
@@ -328,7 +328,7 @@ for g in goldens[:2]:
 ## LLM Providers
 
 ```python
-from llmeval.providers import OpenAIProvider, AnthropicProvider, OllamaProvider
+from llmgrader.providers import OpenAIProvider, AnthropicProvider, OllamaProvider
 
 # OpenAI
 provider = OpenAIProvider(model="gpt-4o", api_key="sk-...")
@@ -340,7 +340,7 @@ provider = AnthropicProvider(model="claude-sonnet-4-6")
 provider = OllamaProvider(model="llama3")
 
 # Custom provider
-from llmeval.providers import LLMProvider
+from llmgrader.providers import LLMProvider
 
 class MyProvider(LLMProvider):
     def generate(self, prompt: str, **kwargs) -> str:
@@ -356,8 +356,8 @@ metric = AnswerRelevancyMetric(model=MyProvider())
 
 ```python
 from langchain_openai import ChatOpenAI
-from llmeval.integrations.langchain import LangChainCallbackHandler, evaluate_chain
-from llmeval.metrics import AnswerRelevancyMetric
+from llmgrader.integrations.langchain import LangChainCallbackHandler, evaluate_chain
+from llmgrader.metrics import AnswerRelevancyMetric
 
 llm = ChatOpenAI(model="gpt-4o")
 chain = llm  # or any LangChain runnable
@@ -375,19 +375,19 @@ result = evaluate_chain(
 
 ```bash
 # Run evaluation tests
-llmeval test tests/test_llm.py
-llmeval test tests/ -n 4          # 4 parallel workers
+llmgrader test tests/test_llm.py
+llmgrader test tests/ -n 4          # 4 parallel workers
 
 # Configure providers
-llmeval set-openai --key sk-... --model gpt-4o
-llmeval set-anthropic --key sk-... --model claude-sonnet-4-6
-llmeval set-ollama --model llama3
+llmgrader set-openai --key sk-... --model gpt-4o
+llmgrader set-anthropic --key sk-... --model claude-sonnet-4-6
+llmgrader set-ollama --model llama3
 
 # List all metrics
-llmeval list-metrics
+llmgrader list-metrics
 
 # Version
-llmeval version
+llmgrader version
 ```
 
 ---

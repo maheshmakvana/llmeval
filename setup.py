@@ -5,13 +5,13 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name="llmgrader",
-    version="1.0.0",
+    version="1.0.1",
     author="Mahesh Makvana",
     author_email="maheshmakvana@example.com",
     description="Open-source LLM evaluation framework — 50+ research-backed metrics for RAG, agents, safety, and more",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/maheshmakvana/llmeval",
+    url="https://github.com/maheshmakvana/llmgrader",
     packages=find_packages(exclude=["tests*", "venv*"]),
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -49,7 +49,7 @@ setup(
         ],
     },
     entry_points={
-        "console_scripts": ["llmeval=llmeval.cli.main:app"],
-        "pytest11": ["llmeval=llmeval.pytest_plugin"],
+        "console_scripts": ["llmgrader=llmgrader.cli.main:app"],
+        "pytest11": ["llmgrader=llmgrader.pytest_plugin"],
     },
 )

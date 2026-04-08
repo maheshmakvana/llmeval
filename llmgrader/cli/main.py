@@ -1,4 +1,4 @@
-"""llmeval CLI — main entry point."""
+"""llmgrader CLI — main entry point."""
 
 from __future__ import annotations
 
@@ -11,8 +11,8 @@ import typer
 from rich.console import Console
 
 app = typer.Typer(
-    name="llmeval",
-    help="LLMEval — open-source LLM evaluation framework",
+    name="llmgrader",
+    help="llmgrader — open-source LLM evaluation framework",
     add_completion=False,
 )
 console = Console()
@@ -26,7 +26,7 @@ def run_tests(
     verbose: bool = typer.Option(False, "-v", "--verbose", help="Verbose output"),
     ignore_errors: bool = typer.Option(False, "--ignore-errors", help="Don't stop on metric errors"),
 ):
-    """Run llmeval evaluation tests via pytest."""
+    """Run llmgrader evaluation tests via pytest."""
     import subprocess
 
     pytest_args = [sys.executable, "-m", "pytest", test_path, "-v"]
@@ -38,20 +38,20 @@ def run_tests(
             console.print("[yellow]Install pytest-xdist for parallel execution: pip install pytest-xdist[/yellow]")
 
     if cache:
-        os.environ["LLMEVAL_USE_CACHE"] = "1"
+        os.environ["llmgrader_USE_CACHE"] = "1"
 
-    console.print(f"[bold cyan]Running llmeval tests:[/bold cyan] {test_path}")
+    console.print(f"[bold cyan]Running llmgrader tests:[/bold cyan] {test_path}")
     result = subprocess.run(pytest_args)
     raise typer.Exit(code=result.returncode)
 
 
 @app.command("login")
 def login(
-    api_key: Optional[str] = typer.Option(None, "--api-key", help="Your llmeval cloud API key"),
+    api_key: Optional[str] = typer.Option(None, "--api-key", help="Your llmgrader cloud API key"),
 ):
-    """Authenticate with llmeval cloud platform."""
+    """Authenticate with llmgrader cloud platform."""
     if not api_key:
-        api_key = typer.prompt("Enter your llmeval API key", hide_input=True)
+        api_key = typer.prompt("Enter your llmgrader API key", hide_input=True)
     _save_config("api_key", api_key)
     console.print("[green]Successfully authenticated![/green]")
 
@@ -114,17 +114,17 @@ def list_metrics():
 
 @app.command("version")
 def version():
-    """Print llmeval version."""
+    """Print llmgrader version."""
     try:
         from importlib.metadata import version as get_version
-        v = get_version("llmeval")
+        v = get_version("llmgrader")
     except Exception:
         v = "1.0.0"
-    console.print(f"llmeval version [bold]{v}[/bold]")
+    console.print(f"llmgrader version [bold]{v}[/bold]")
 
 
 def _save_config(key: str, value: str) -> None:
-    config_path = Path.home() / ".llmeval" / "config.json"
+    config_path = Path.home() / ".llmgrader" / "config.json"
     config_path.parent.mkdir(exist_ok=True)
     import json
     config = {}

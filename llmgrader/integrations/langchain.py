@@ -14,7 +14,7 @@ class LangChainCallbackHandler:
 
     Usage:
         from langchain_openai import ChatOpenAI
-        from llmeval.integrations.langchain import LangChainCallbackHandler
+        from llmgrader.integrations.langchain import LangChainCallbackHandler
 
         handler = LangChainCallbackHandler()
         llm = ChatOpenAI(callbacks=[handler])
@@ -78,7 +78,7 @@ def evaluate_chain(chain, inputs: List[str], metrics: List[Any]) -> Any:
     Args:
         chain: Any LangChain runnable (chain, agent, etc.)
         inputs: List of input strings to test.
-        metrics: List of llmeval metrics.
+        metrics: List of llmgrader metrics.
 
     Returns:
         EvaluationResult from evaluate().

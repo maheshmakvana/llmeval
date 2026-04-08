@@ -1,12 +1,12 @@
 """
-llmeval — Open-source LLM evaluation framework.
+llmgrader — Open-source LLM evaluation framework.
 
 50+ research-backed metrics for RAG, agents, safety, and more.
 Pytest-native, provider-agnostic, extensible.
 
 Quick start:
-    from llmeval import LLMTestCase, assert_test
-    from llmeval.metrics import AnswerRelevancyMetric, FaithfulnessMetric
+    from llmgrader import LLMTestCase, assert_test
+    from llmgrader.metrics import AnswerRelevancyMetric, FaithfulnessMetric
 
     tc = LLMTestCase(
         input="What is the capital of France?",

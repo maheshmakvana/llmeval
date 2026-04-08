@@ -30,7 +30,7 @@ class MetricResult:
 
 class BaseMetric(ABC):
     """
-    Abstract base for all llmeval metrics.
+    Abstract base for all llmgrader metrics.
 
     Subclass and implement `measure(test_case)` and `is_successful()`.
 

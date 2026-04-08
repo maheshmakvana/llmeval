@@ -1,4 +1,4 @@
-"""Core tests for llmeval — test cases, dataset, evaluate, tracing, and metrics."""
+"""Core tests for llmgrader — test cases, dataset, evaluate, tracing, and metrics."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ import sys
 import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from llmeval import (
+from llmgrader import (
     LLMTestCase,
     LLMTestCaseParams,
     ConversationalTestCase,
@@ -28,7 +28,7 @@ from llmeval import (
     set_tracer,
     clear_tracer,
 )
-from llmeval.metrics import (
+from llmgrader.metrics import (
     AnswerRelevancyMetric,
     FaithfulnessMetric,
     ContextualRelevancyMetric,
@@ -50,8 +50,8 @@ from llmeval.metrics import (
     RoleAdherenceMetric,
     KnowledgeRetentionMetric,
 )
-from llmeval.metrics.custom.dag import DAGNode
-from llmeval.metrics.base import MetricResult
+from llmgrader.metrics.custom.dag import DAGNode
+from llmgrader.metrics.base import MetricResult
 
 
 # ─── Helpers ─────────────────────────────────────────────────────────────────

@@ -23,4 +23,4 @@ htmlcov/
 .nox/
 *.DS_Store
 ~$*
-.llmeval/
+.llmgrader/

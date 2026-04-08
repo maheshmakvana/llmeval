@@ -18,7 +18,7 @@ def evaluate_crew(
     Args:
         crew: A CrewAI Crew instance.
         inputs: List of input dicts to pass to crew.kickoff().
-        metrics: List of llmeval metrics.
+        metrics: List of llmgrader metrics.
 
     Returns:
         EvaluationResult

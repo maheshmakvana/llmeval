@@ -1,4 +1,4 @@
-"""pytest plugin for llmeval — enables @pytest.mark.llmeval and llmeval_test fixtures."""
+"""pytest plugin for llmgrader — enables @pytest.mark.llmgrader and llmgrader_test fixtures."""
 
 from __future__ import annotations
 
@@ -14,19 +14,19 @@ from .test_case import ConversationalTestCase, LLMTestCase
 def pytest_configure(config):
     config.addinivalue_line(
         "markers",
-        "llmeval: mark test as an llmeval LLM evaluation test",
+        "llmgrader: mark test as an llmgrader LLM evaluation test",
     )
 
 
 @pytest.fixture
-def llmeval_assert():
+def llmgrader_assert():
     """
     Fixture that provides the assert_test function for use in pytest.
 
     Example:
-        def test_answer_quality(llmeval_assert):
+        def test_answer_quality(llmgrader_assert):
             tc = LLMTestCase(input="What is 2+2?", actual_output="4")
-            llmeval_assert(tc, metrics=[AnswerRelevancyMetric(threshold=0.7)])
+            llmgrader_assert(tc, metrics=[AnswerRelevancyMetric(threshold=0.7)])
     """
     return assert_test
 
@@ -60,12 +60,12 @@ def make_test_case():
     return factory
 
 
-def llmeval_parametrize(test_cases: List[dict]):
+def llmgrader_parametrize(test_cases: List[dict]):
     """
     Parametrize decorator for running the same evaluation across multiple inputs.
 
     Example:
-        @llmeval_parametrize([
+        @llmgrader_parametrize([
             {"input": "What is 2+2?", "actual_output": "4"},
             {"input": "Capital of France?", "actual_output": "Paris"},
         ])

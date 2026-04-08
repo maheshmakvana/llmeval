@@ -22,7 +22,7 @@ def evaluate_query_engine(
     Args:
         query_engine: A LlamaIndex query engine (BaseQueryEngine).
         questions: List of question strings.
-        metrics: List of llmeval metrics.
+        metrics: List of llmgrader metrics.
         include_source_nodes: Include retrieved nodes as retrieval_context.
 
     Returns:
@@ -56,7 +56,7 @@ def evaluate_query_engine(
 class LlamaIndexObserver:
     """
     Context manager that instruments a LlamaIndex query engine
-    and collects trace data via llmeval's tracing system.
+    and collects trace data via llmgrader's tracing system.
 
     Usage:
         with LlamaIndexObserver() as observer:
