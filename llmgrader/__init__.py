@@ -19,7 +19,7 @@ Quick start:
     ])
 """
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 __author__ = "Mahesh Makvana"
 
 # Core
@@ -74,20 +74,47 @@ from .metrics import (
     ToxicityMetric,
     PIILeakageMetric,
     MisuseMetric,
+    NonAdviceMetric,
+    RoleViolationMetric,
     # Agentic
     TaskCompletionMetric,
     ToolCorrectnessMetric,
     StepEfficiencyMetric,
     ArgumentCorrectnessMetric,
+    GoalAccuracyMetric,
+    PlanAdherenceMetric,
+    PlanQualityMetric,
     # Conversational
     ConversationalRelevancyMetric,
     ConversationCompletenessMetric,
     RoleAdherenceMetric,
     KnowledgeRetentionMetric,
+    TurnRelevancyMetric,
+    TurnFaithfulnessMetric,
+    TurnContextualPrecisionMetric,
+    TurnContextualRecallMetric,
+    TurnContextualRelevancyMetric,
+    ConversationalGEvalMetric,
+    ConversationalDAGMetric,
+    ConversationalDAGNode,
     # Other
     JSONCorrectnessMetric,
     SummarizationMetric,
+    ExactMatchMetric,
+    PatternMatchMetric,
+    PromptAlignmentMetric,
+    TopicAdherenceMetric,
+    ArenaGEvalMetric,
+    # Multimodal
+    TextToImageMetric,
+    ImageEditingMetric,
+    ImageCoherenceMetric,
+    ImageHelpfulnessMetric,
+    ImageReferenceMetric,
 )
+
+# Benchmarks (imported separately to avoid heavy dependencies at top level)
+# Use: from llmgrader.benchmarks import MMLUBenchmark, HellaSwagBenchmark, GSM8KBenchmark
 
 __all__ = [
     "__version__",
@@ -104,13 +131,30 @@ __all__ = [
     "observe", "Tracer", "Span", "Trace", "get_current_tracer", "set_tracer", "clear_tracer",
     # Providers
     "LLMProvider", "EmbeddingProvider", "OpenAIProvider", "AnthropicProvider", "OllamaProvider",
-    # Metrics
+    # Metrics — base
     "BaseMetric", "MetricResult",
+    # Metrics — RAG
     "AnswerRelevancyMetric", "FaithfulnessMetric", "ContextualRelevancyMetric",
     "ContextualPrecisionMetric", "ContextualRecallMetric",
+    # Metrics — Custom
     "GEvalMetric", "DAGMetric",
+    # Metrics — Safety
     "HallucinationMetric", "BiasMetric", "ToxicityMetric", "PIILeakageMetric", "MisuseMetric",
+    "NonAdviceMetric", "RoleViolationMetric",
+    # Metrics — Agentic
     "TaskCompletionMetric", "ToolCorrectnessMetric", "StepEfficiencyMetric", "ArgumentCorrectnessMetric",
-    "ConversationalRelevancyMetric", "ConversationCompletenessMetric", "RoleAdherenceMetric", "KnowledgeRetentionMetric",
+    "GoalAccuracyMetric", "PlanAdherenceMetric", "PlanQualityMetric",
+    # Metrics — Conversational
+    "ConversationalRelevancyMetric", "ConversationCompletenessMetric",
+    "RoleAdherenceMetric", "KnowledgeRetentionMetric",
+    "TurnRelevancyMetric", "TurnFaithfulnessMetric",
+    "TurnContextualPrecisionMetric", "TurnContextualRecallMetric", "TurnContextualRelevancyMetric",
+    "ConversationalGEvalMetric", "ConversationalDAGMetric", "ConversationalDAGNode",
+    # Metrics — Other
     "JSONCorrectnessMetric", "SummarizationMetric",
+    "ExactMatchMetric", "PatternMatchMetric", "PromptAlignmentMetric",
+    "TopicAdherenceMetric", "ArenaGEvalMetric",
+    # Metrics — Multimodal
+    "TextToImageMetric", "ImageEditingMetric", "ImageCoherenceMetric",
+    "ImageHelpfulnessMetric", "ImageReferenceMetric",
 ]

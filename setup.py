@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name="llmgrader",
-    version="1.0.1",
+    version="1.1.0",
     author="Mahesh Makvana",
     author_email="maheshmakvana@example.com",
     description="Open-source LLM evaluation framework — 50+ research-backed metrics for RAG, agents, safety, and more",
