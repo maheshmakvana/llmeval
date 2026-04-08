@@ -1,5 +1,7 @@
 # llmgrader
 
+![llmgrader banner](docs/images/banner.jpg)
+
 **Open-source LLM evaluation framework** — 50+ research-backed metrics for RAG pipelines, AI agents, safety, and conversational systems. Pytest-native. Provider-agnostic.
 
 ```bash
@@ -71,6 +73,8 @@ pip install "llmgrader[all]"
 
 ### RAG Metrics
 
+![RAG evaluation](docs/images/rag.jpg)
+
 ```python
 from llmgrader.metrics import (
     AnswerRelevancyMetric,       # Is the answer relevant to the question?
@@ -133,6 +137,8 @@ metric = DAGMetric(name="ResponseQuality", root=dag, threshold=0.5)
 
 ### Safety Metrics
 
+![Safety metrics](docs/images/safety.jpg)
+
 ```python
 from llmgrader.metrics import (
     HallucinationMetric,   # Detects factual hallucinations vs context
@@ -146,6 +152,8 @@ result = BiasMetric(threshold=0.7).measure(tc)
 ```
 
 ### Agentic Metrics
+
+![Agentic evaluation](docs/images/agentic.jpg)
 
 ```python
 from llmgrader import ToolCall
@@ -248,6 +256,8 @@ def test_rag_answer():
 ---
 
 ## Tracing & Component-Level Evaluation
+
+![Tracing](docs/images/tracing.jpg)
 
 ```python
 from llmgrader import observe, Tracer, set_tracer, clear_tracer
