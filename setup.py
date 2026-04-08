@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
 setup(
-    name="llmeval",
+    name="llmgrader",
     version="1.0.0",
     author="Mahesh Makvana",
     author_email="maheshmakvana@example.com",
