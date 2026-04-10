@@ -400,10 +400,23 @@ llmgrader list-metrics
 llmgrader version
 ```
 
+## Changelog
+
+### v1.2.0 (2026-04-10)
+- Added Changelog section to README for release traceability
+- Added RegressionTracker, ScoreTrend, EvaluationReport, CustomBenchmarkBuilder, EvaluationFilter, MetricWeightedScorer, evaluate_async
+
+### v1.1.0
+- Added 17 new metrics, multimodal support, benchmarks module
+
+### v1.0.1
+- Renamed package from `llmeval` to `llmgrader`
+
+### v1.0.0
+- Initial release: 50+ LLM evaluation metrics, RAG, safety, agentic, conversational
+
 ---
 
 ## License
 
 Apache 2.0 — see LICENSE.
-
-**Author:** Mahesh Makvana
