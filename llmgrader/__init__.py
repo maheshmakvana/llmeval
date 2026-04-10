@@ -19,7 +19,7 @@ Quick start:
     ])
 """
 
-__version__ = "1.1.0"
+__version__ = "1.2.0"
 __author__ = "Mahesh Makvana"
 
 # Core
@@ -113,6 +113,19 @@ from .metrics import (
     ImageReferenceMetric,
 )
 
+# Advanced features (1.2.0)
+from .advanced import (
+    RegressionTracker,
+    RunRecord,
+    ScoreTrend,
+    EvaluationReport,
+    CustomBenchmarkBuilder,
+    BuiltBenchmark,
+    EvaluationFilter,
+    MetricWeightedScorer,
+    evaluate_async,
+)
+
 # Benchmarks (imported separately to avoid heavy dependencies at top level)
 # Use: from llmgrader.benchmarks import MMLUBenchmark, HellaSwagBenchmark, GSM8KBenchmark
 
@@ -157,4 +170,11 @@ __all__ = [
     # Metrics — Multimodal
     "TextToImageMetric", "ImageEditingMetric", "ImageCoherenceMetric",
     "ImageHelpfulnessMetric", "ImageReferenceMetric",
+    # Advanced (1.2.0)
+    "RegressionTracker", "RunRecord", "ScoreTrend",
+    "EvaluationReport",
+    "CustomBenchmarkBuilder", "BuiltBenchmark",
+    "EvaluationFilter",
+    "MetricWeightedScorer",
+    "evaluate_async",
 ]
