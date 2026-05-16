@@ -1,3 +1,5 @@
+![llmeval Banner](assets/images/banner.svg)
+
 # llmgrader
 
 ![llmgrader banner](docs/images/banner.jpg)
