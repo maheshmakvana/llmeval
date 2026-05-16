@@ -5,10 +5,10 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name="llmgrader",
-    version="1.2.0",
+    version="1.2.3",
     author="Mahesh Makvana",
     author_email="maheshmakvana@example.com",
-    description="Open-source LLM evaluation framework — 50+ metrics for RAG, agents, safety, async eval, regression tracking, custom benchmarks, and exportable reports",
+    description="Open-source LLM evaluation framework ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â 50+ metrics for RAG, agents, safety, async eval, regression tracking, custom benchmarks, and exportable reports",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/maheshmakvana/llmgrader",
