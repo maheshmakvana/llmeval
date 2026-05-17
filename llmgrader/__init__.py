@@ -19,7 +19,7 @@ Quick start:
     ])
 """
 
-__version__ = "1.2.0"
+__version__ = "1.2.6"
 __author__ = "Mahesh Makvana"
 
 # Core

@@ -7,7 +7,7 @@ import threading
 import time
 import uuid
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any, Callable, Dict, List, Optional
 
 # Thread-local tracer context
@@ -62,12 +62,12 @@ class Trace:
 
     trace_id: str = field(default_factory=lambda: str(uuid.uuid4()))
     root_span: Optional[Span] = None
-    started_at: str = field(default_factory=lambda: datetime.utcnow().isoformat())
+    started_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     ended_at: Optional[str] = None
     metadata: Dict[str, Any] = field(default_factory=dict)
 
     def finish(self) -> None:
-        self.ended_at = datetime.utcnow().isoformat()
+        self.ended_at = datetime.now(timezone.utc).isoformat()
 
     def to_dict(self) -> Dict[str, Any]:
         return {

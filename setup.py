@@ -5,10 +5,10 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name="llmgrader",
-    version="1.2.4",
+    version="1.2.6",
     author="Mahesh Makvana",
-    author_email="maheshmakvana@example.com",
-    description="Open-source LLM evaluation framework ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â 50+ metrics for RAG, agents, safety, async eval, regression tracking, custom benchmarks, and exportable reports",
+    author_email="maheshmakwana527@gmail.com",
+    description="Open-source LLM evaluation framework — 50+ metrics for RAG, agents, safety, async eval, regression tracking, custom benchmarks, and exportable reports",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/maheshmakvana/llmgrader",
@@ -51,6 +51,8 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",

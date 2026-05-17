@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import os
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any, Callable, Dict, Iterable, Iterator, List, Optional
 
 from .test_case import ConversationalGolden, Golden, LLMTestCase
@@ -32,7 +32,7 @@ class EvaluationDataset:
     def __init__(self, goldens: Optional[List[Golden]] = None) -> None:
         self.goldens: List[Golden] = goldens or []
         self._version: str = str(uuid.uuid4())[:8]
-        self._created_at: str = datetime.utcnow().isoformat()
+        self._created_at: str = datetime.now(timezone.utc).isoformat()
         self._history: List[Dict[str, Any]] = []
 
     # ------------------------------------------------------------------
@@ -137,7 +137,7 @@ class EvaluationDataset:
 
     def _log_event(self, event_type: str, description: str) -> None:
         self._history.append({
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "type": event_type,
             "description": description,
         })
